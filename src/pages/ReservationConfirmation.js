@@ -1,4 +1,3 @@
-// ReservationConfirmation.js
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -11,6 +10,7 @@ const capitalizeFirstLetter = (string) => {
 const capitalizeFullName = (fullName) => {
   return fullName.split(' ').map(name => capitalizeFirstLetter(name)).join(' ');
 };
+
 const formatDate = (date) => {
   if (!date) return ''; // Eğer tarih yoksa boş döner
   const [year, month, day] = date.split('-'); // Tarihi parçalar
@@ -24,7 +24,7 @@ const ReservationConfirmation = () => {
   const [nights, setNights] = useState('');
   const [adults, setAdults] = useState('');
   const [children, setChildren] = useState('');
-  const [mealPlan, setMealPlan] = useState('Kahvaltı Dahil');
+  const [mealPlan, setMealPlan] = useState('Kahvaltı Dahil'); // Yemek planı için varsayılan değer
   const [totalPrice, setTotalPrice] = useState('');
   const [roomType, setRoomType] = useState('İskaroz Taş Oda'); // Oda tipi için varsayılan değer
   const [reservationSummary, setReservationSummary] = useState('');
@@ -39,14 +39,14 @@ const ReservationConfirmation = () => {
     const childrenSummary = children > 0 ? `- ${children} Çocuk\n` : '';
   
     let summary = `
-  - ${capitalizeFullName(name)}
-  - ${roomType}
-  - ${formattedCheckInDate} Giriş
-  - ${formattedCheckOutDate} Çıkış
-  - ${nights} Gece
-  - ${adults} Yetişkin
-  ${childrenSummary}- ${mealPlan}
-  - Toplam Fiyat: ${totalPrice} ₺
+- ${capitalizeFullName(name)}
+- ${roomType}
+- ${formattedCheckInDate} Giriş
+- ${formattedCheckOutDate} Çıkış
+- ${nights} Gece
+- ${adults} Yetişkin
+${childrenSummary}- ${mealPlan}
+- Toplam Fiyat: ${totalPrice} ₺
     `.trim(); // Boşlukları kaldırmak için trim kullanıyoruz.
   
     setReservationSummary(summary);
