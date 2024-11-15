@@ -47,8 +47,9 @@ const ReservationConfirmation = () => {
 - ${adults} Yetişkin
 ${childrenSummary}- ${mealPlan}
 - Toplam Fiyat: ${totalPrice} ₺
+-${setMealPlan}
     `.trim(); // Boşlukları kaldırmak için trim kullanıyoruz.
-  
+
     setReservationSummary(summary);
   };
   
