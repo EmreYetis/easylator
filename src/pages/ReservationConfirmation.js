@@ -47,7 +47,6 @@ const ReservationConfirmation = () => {
 - ${adults} Yetişkin
 ${childrenSummary}- ${mealPlan}
 - Toplam Fiyat: ${totalPrice} ₺
--${setMealPlan}
     `.trim(); // Boşlukları kaldırmak için trim kullanıyoruz.
 
     setReservationSummary(summary);
@@ -139,6 +138,17 @@ ${childrenSummary}- ${mealPlan}
                 onChange={(e) => setChildren(e.target.value)}
                 required
               />
+            </div>
+            <div className="mb-2">
+              <select
+                className="form-select form-select-sm"
+                value={mealPlan}
+                onChange={(e) => setMealPlan(e.target.value)}
+              >
+                <option value="Kahvaltı Dahil">Kahvaltı Dahil</option>
+                <option value="Sadece Oda">Sadece Oda</option>
+
+              </select>
             </div>
             <div className="mb-3">
               <input
