@@ -1,0 +1,14 @@
+.beds-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Yataklar arasında boşluk */
+  }
+  
+  .bed {
+    border: 1px solid #ccc; /* Yatakların kenarları */
+    border-radius: 5px; /* Kenarları yuvarlat */
+    padding: 10px; /* İç boşluk */
+    width: 150px; /* Yatak genişliği */
+    background-color: #f9f9f9; /* Arka plan rengi */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Gölge efekti */
+  }
