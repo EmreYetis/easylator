@@ -5,6 +5,7 @@ import CheckIn from './pages/CheckIn';
 import CheckOut from './pages/CheckOut';
 import Report from './pages/Report';
 import ReservationConfirmation from './pages/ReservationConfirmation';
+import KapiGiris from './pages/KapiGiris';
 
 function App() {
   return (
@@ -28,12 +29,18 @@ function App() {
               <button className="btn btn-primary btn-block mb-3">Rezervasyon Onay</button>
             </Link>
           </div>
+          <div className='col-md-6'>
+          <Link to="/kapigiris">
+              <button className="btn btn-info btn-block mb-3">Kapı Müşterisi</button>
+            </Link>
+          </div>
         </div>
         <Routes>
           <Route path="/checkin" element={<CheckIn />} />
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/report" element={<Report />} />
           <Route path="/reservation" element={<ReservationConfirmation />} />
+          <Route path="/kapigiris" element={<KapiGiris />} />
         </Routes>
       </div>
     </Router>
