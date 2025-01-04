@@ -62,11 +62,13 @@ const ReservationConfirmation = () => {
     let summary = `
 - ${capitalizeFullName(name)}
 - ${roomType}
+
 - ${formattedCheckInDate} Giriş
 - ${formattedCheckOutDate} Çıkış
 - ${nights} Gece
 - ${adults} Yetişkin
 ${childrenSummary}- ${mealPlan}
+
 - Toplam Fiyat: ${totalPrice} ₺
     `.trim();
 
