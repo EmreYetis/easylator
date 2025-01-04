@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <div className="App container text-center">
-        <h1>Bizim Ev Datça</h1>
+        <h1>BED Resepsiyon</h1>
         <div className="row mt-5">
           <div className="col-md-6">
             <Link to="/checkin">
