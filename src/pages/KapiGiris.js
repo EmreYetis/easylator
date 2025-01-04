@@ -6,6 +6,7 @@ const KapiGiris = () => {
   const [telefon, setTelefon] = useState('');
   const [yetişkinSayısı, setYetişkinSayısı] = useState(0);
   const [çocukSayısı, setÇocukSayısı] = useState(0);
+  const [kahvaltı, setKahvaltı] = useState('Kahvaltı Dahil');
   const [message, setMessage] = useState('');
 
   const houses = [
@@ -25,8 +26,16 @@ const KapiGiris = () => {
   const handleSubmit = () => {
     const formattedTelefon = telefon.replace(/(\d{4})(\d{3})(\d{2})(\d{2})/, '$1 $2 $3 $4');
     
+    const formatName = (name) => {
+      return name
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
+    };
+
+    const formattedAdSoyad = formatName(adSoyad);
     const childrenMessage = çocukSayısı > 0 ? `${çocukSayısı} Çocuk` : '';
-    const newMessage = `Merhaba\n\n-${selectedHouse} kapı misafiri giriş yaptı.\n\n${yetişkinSayısı} Yetişkin ${childrenMessage}\n\n${adSoyad}\n${formattedTelefon}`;
+    const newMessage = `Merhaba\n-"${selectedHouse}" kapı misafiri giriş yaptı.\n-${yetişkinSayısı} Yetişkin ${childrenMessage}\n-${kahvaltı}\n\n${formattedAdSoyad}\n${formattedTelefon}`;
     setMessage(newMessage);
   };
 
@@ -43,25 +52,106 @@ const KapiGiris = () => {
   };
 
   return (
-    <div className='container'>
-      <h2>Kapı Müşterisi</h2>
-      <select onChange={(e) => setSelectedHouse(e.target.value)}>
-        <option value="">Ev Seçin</option>
-        {houses.map((house, index) => (
-          <option key={index} value={house}>{house}</option>
-        ))}
-      </select>
-      <input type="text" placeholder="İsim Soyisim" onChange={(e) => setAdSoyad(e.target.value)} />
-      <input type="text" placeholder="Telefon Numarası" onChange={handleTelefonChange} />
-      <input type="number" placeholder="Yetişkin Sayısı" onChange={(e) => setYetişkinSayısı(e.target.value)} />
-      <input type="number" placeholder="Çocuk Sayısı" onChange={(e) => setÇocukSayısı(e.target.value)} />
-      <button onClick={handleSubmit}>Gönder</button>
-      {message && (
-        <div>
-          <pre>{message}</pre>
-          <button onClick={copyToClipboard}>Kopyala</button>
-        </div>
-      )}
+    <div className='form-container'>
+      <h2 className='form-title'>Kapı Müşterisi</h2>
+      <div className='form-wrapper'>
+        <select className='form-select' onChange={(e) => setSelectedHouse(e.target.value)}>
+          <option value="">Ev Seçin</option>
+          {houses.map((house, index) => (
+            <option key={index} value={house}>{house}</option>
+          ))}
+        </select>
+        <select className='form-select' onChange={(e) => setKahvaltı(e.target.value)}>
+          <option value="">Kahvaltı Seçin</option>
+          <option value="Kahvaltı Dahil">Kahvaltı Dahil</option>
+          <option value="Kahvaltı Hariç">Kahvaltı Hariç</option>
+        </select>
+        <input className='form-input' type="text" placeholder="İsim Soyisim" onChange={(e) => setAdSoyad(e.target.value)} />
+        <input className='form-input' type="text" placeholder="Telefon Numarası" onChange={handleTelefonChange} />
+        <input className='form-input' type="number" placeholder="Yetişkin Sayısı" onChange={(e) => setYetişkinSayısı(e.target.value)} />
+        <input className='form-input' type="number" placeholder="Çocuk Sayısı" onChange={(e) => setÇocukSayısı(e.target.value)} />
+        <button className='form-button' onClick={handleSubmit}>Gönder</button>
+        {message && (
+          <div className='message-container'>
+            <pre className='message-text'>{message}</pre>
+            <button className='copy-button' onClick={copyToClipboard}>Kopyala</button>
+          </div>
+        )}
+      </div>
+
+      <style jsx>{`
+        .form-container {
+          max-width: 500px;
+          margin: 0 auto;
+          padding: 20px;
+          font-family: Arial, sans-serif;
+        }
+
+        .form-title {
+          text-align: center;
+          color: #333;
+          margin-bottom: 30px;
+        }
+
+        .form-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .form-input, .form-select {
+          padding: 12px;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          font-size: 16px;
+          transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus {
+          outline: none;
+          border-color: #4a90e2;
+          box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+        }
+
+        .form-button, .copy-button {
+          padding: 12px 20px;
+          background-color: #4a90e2;
+          color: white;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 16px;
+          transition: background-color 0.3s ease;
+        }
+
+        .form-button:hover, .copy-button:hover {
+          background-color: #357abd;
+        }
+
+        .message-container {
+          margin-top: 20px;
+          padding: 15px;
+          background-color: #f5f5f5;
+          border-radius: 6px;
+        }
+
+        .message-text {
+          white-space: pre-wrap;
+          margin-bottom: 15px;
+          font-family: monospace;
+          font-size: 14px;
+        }
+
+        /* Number input ok'larını kaldırma */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+          -webkit-appearance: none; 
+          margin: 0; 
+        }
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
+      `}</style>
     </div>
   );
 };

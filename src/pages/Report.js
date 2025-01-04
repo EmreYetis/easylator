@@ -76,7 +76,7 @@ Girişler ;
         <div className='col-md-4'>
           <h3>Çıkışlar</h3>
           {checkOuts.map((checkOut, index) => (
-            <div className="form-row mb-3" key={index}>
+            <div className="form-row" key={index}>
               <div className="col">
                 <input
                   type="text"
@@ -112,7 +112,7 @@ Girişler ;
         <div className='col-md-4'>
           <h3>Konaklayanlar</h3>
           {stayingGuests.map((guest, index) => (
-            <div className="form-row mb-3" key={index}>
+            <div className="form-row" key={index}>
               <div className="col">
                 <input
                   type="text"
@@ -148,7 +148,7 @@ Girişler ;
         <div className='col-md-4'>
           <h3>Girişler</h3>
           {checkIns.map((checkIn, index) => (
-            <div className="form-row mb-3" key={index}>
+            <div className="form-row" key={index}>
               <div className="col">
                 <input
                   type="text"

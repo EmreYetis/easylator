@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Baş harfleri büyük yapma fonksiyonu
@@ -25,17 +25,38 @@ const ReservationConfirmation = () => {
   const [adults, setAdults] = useState('');
   const [children, setChildren] = useState('');
   const [mealPlan, setMealPlan] = useState('Kahvaltı Dahil'); // Yemek planı için varsayılan değer
-  const [totalPrice, setTotalPrice] = useState('');
+  const [nightlyRate, setNightlyRate] = useState(''); // Gecelik fiyat için yeni state
   const [roomType, setRoomType] = useState('İskaroz Taş Oda'); // Oda tipi için varsayılan değer
   const [reservationSummary, setReservationSummary] = useState('');
+
+  // checkInDate veya nights değiştiğinde çıkış tarihini otomatik hesapla
+  useEffect(() => {
+    if (checkInDate && nights) {
+      const checkIn = new Date(checkInDate);
+      const checkOut = new Date(checkIn);
+      checkOut.setDate(checkOut.getDate() + parseInt(nights));
+      
+      // YYYY-MM-DD formatına çevir
+      const formattedDate = checkOut.toISOString().split('T')[0];
+      setCheckOutDate(formattedDate);
+    }
+  }, [checkInDate, nights]);
+
+  // Toplam fiyatı hesaplama fonksiyonu
+  const calculateTotalPrice = () => {
+    if (nights && nightlyRate) {
+      return parseInt(nights) * parseInt(nightlyRate);
+    }
+    return 0;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
   
     const formattedCheckInDate = formatDate(checkInDate);
     const formattedCheckOutDate = formatDate(checkOutDate);
+    const totalPrice = calculateTotalPrice();
   
-    // Çocuk sayısını sadece 0'dan büyükse ekleyelim.
     const childrenSummary = children > 0 ? `- ${children} Çocuk\n` : '';
   
     let summary = `
@@ -47,7 +68,7 @@ const ReservationConfirmation = () => {
 - ${adults} Yetişkin
 ${childrenSummary}- ${mealPlan}
 - Toplam Fiyat: ${totalPrice} ₺
-    `.trim(); // Boşlukları kaldırmak için trim kullanıyoruz.
+    `.trim();
 
     setReservationSummary(summary);
   };
@@ -102,15 +123,6 @@ ${childrenSummary}- ${mealPlan}
             </div>
             <div className="mb-2">
               <input
-                type="date"
-                className="form-control form-control-sm"
-                value={checkOutDate}
-                onChange={(e) => setCheckOutDate(e.target.value)}
-                required
-              />
-            </div>
-            <div className="mb-2">
-              <input
                 type="text"
                 className="form-control form-control-sm"
                 placeholder="Gece Sayısı"
@@ -152,11 +164,11 @@ ${childrenSummary}- ${mealPlan}
             </div>
             <div className="mb-3">
               <input
-                type="text"
+                type="number"
                 className="form-control form-control-sm"
-                placeholder="Toplam Fiyat"
-                value={totalPrice}
-                onChange={(e) => setTotalPrice(e.target.value)}
+                placeholder="Gecelik Fiyat"
+                value={nightlyRate}
+                onChange={(e) => setNightlyRate(e.target.value)}
                 required
               />
             </div>
