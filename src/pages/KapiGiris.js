@@ -21,6 +21,9 @@ const KapiGiris = () => {
     'Hurmalıbük Vagon Ev',
     'Değirmenbükü Vagon Ev',
     'Kızılbük Vagon Ev',
+    'Sarıliman Vagon Ev',
+    'Yamaç Ev',
+    'Mengen Ev',
   ];
 
   const handleSubmit = () => {

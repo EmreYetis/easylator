@@ -56,6 +56,7 @@ const ReservationConfirmation = () => {
     const formattedCheckInDate = formatDate(checkInDate);
     const formattedCheckOutDate = formatDate(checkOutDate);
     const totalPrice = calculateTotalPrice();
+    const depositAmount = totalPrice / 2; // Toplam fiyatın yarısı
   
     const childrenSummary = children > 0 ? `- ${children} Çocuk\n` : '';
   
@@ -69,7 +70,9 @@ const ReservationConfirmation = () => {
 - ${adults} Yetişkin
 ${childrenSummary}- ${mealPlan}
 
+- Gecelik Fiyat: ${nightlyRate} ₺
 - Toplam Fiyat: ${totalPrice} ₺
+- Ön Ödeme: ${depositAmount} ₺
     `.trim();
 
     setReservationSummary(summary);
@@ -112,6 +115,9 @@ ${childrenSummary}- ${mealPlan}
                 <option value="Hurmalıbük Vagon Ev">Hurmalıbük Vagon Ev</option>
                 <option value="Değirmenbükü Vagon Ev">Değirmenbükü Vagon Ev</option>
                 <option value="Kızılbük Vagon Ev">Kızılbük Vagon Ev</option>
+                <option value="Sarıliman Vagon Ev">Sarıliman Vagon Ev</option>
+                <option value="Yamaç Ev">Yamaç Ev</option>
+                <option value="Mengen Ev">Mengen Ev</option>
               </select>
             </div>
             <div className="mb-2">
