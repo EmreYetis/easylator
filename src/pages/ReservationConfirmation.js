@@ -56,7 +56,7 @@ const ReservationConfirmation = () => {
     const formattedCheckInDate = formatDate(checkInDate);
     const formattedCheckOutDate = formatDate(checkOutDate);
     const totalPrice = calculateTotalPrice();
-    const depositAmount = totalPrice / 2; // Toplam fiyatın yarısı
+    const depositAmount = totalPrice === parseInt(nightlyRate) ? parseInt(nightlyRate) : totalPrice / 2;
   
     const childrenSummary = children > 0 ? `- ${children} Çocuk\n` : '';
   
@@ -70,7 +70,6 @@ const ReservationConfirmation = () => {
 - ${adults} Yetişkin
 ${childrenSummary}- ${mealPlan}
 
-- Gecelik Fiyat: ${nightlyRate} ₺
 - Toplam Fiyat: ${totalPrice} ₺
 - Ön Ödeme: ${depositAmount} ₺
     `.trim();
