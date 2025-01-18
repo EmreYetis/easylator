@@ -132,6 +132,8 @@ const KapiGiris = () => {
           display: flex;
           flex-direction: column;
           gap: 15px;
+          align-items: flex-start;
+          width: 100%;
         }
 
         .form-input, .form-select {
@@ -140,6 +142,9 @@ const KapiGiris = () => {
           border-radius: 6px;
           font-size: 16px;
           transition: border-color 0.3s ease;
+          text-align: left;
+          width: 100%;
+          box-sizing: border-box;
         }
 
         .form-input:focus, .form-select:focus {
@@ -178,6 +183,23 @@ const KapiGiris = () => {
         }
         input[type=number] {
           -moz-appearance: textfield;
+        }
+
+        .form-input::placeholder {
+          text-align: left;
+        }
+
+        .form-button {
+          padding: 12px 20px;
+          background-color: #4a90e2;
+          color: white;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 16px;
+          transition: background-color 0.3s ease;
+          margin: 0 auto;
+          display: block;
         }
       `}</style>
     </div>
