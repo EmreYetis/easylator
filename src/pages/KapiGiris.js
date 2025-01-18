@@ -56,44 +56,76 @@ const KapiGiris = () => {
 
   return (
     <div className='form-container'>
-      <h2 className='form-title'>Kapı Müşterisi</h2>
-      <div className='form-wrapper'>
-        <select className='form-select' onChange={(e) => setSelectedHouse(e.target.value)}>
-          <option value="">Ev Seçin</option>
-          {houses.map((house, index) => (
-            <option key={index} value={house}>{house}</option>
-          ))}
-        </select>
-        <select className='form-select' onChange={(e) => setKahvaltı(e.target.value)}>
-          <option value="">Kahvaltı Seçin</option>
-          <option value="Kahvaltı Dahil">Kahvaltı Dahil</option>
-          <option value="Kahvaltı Hariç">Kahvaltı Hariç</option>
-        </select>
-        <input className='form-input' type="text" placeholder="İsim Soyisim" onChange={(e) => setAdSoyad(e.target.value)} />
-        <input className='form-input' type="text" placeholder="Telefon Numarası" onChange={handleTelefonChange} />
-        <input className='form-input' type="number" placeholder="Yetişkin Sayısı" onChange={(e) => setYetişkinSayısı(e.target.value)} />
-        <input className='form-input' type="number" placeholder="Çocuk Sayısı" onChange={(e) => setÇocukSayısı(e.target.value)} />
-        <button className='form-button' onClick={handleSubmit}>Gönder</button>
-        {message && (
-          <div className='message-container'>
-            <pre className='message-text'>{message}</pre>
-            <button className='copy-button' onClick={copyToClipboard}>Kopyala</button>
+      <div className='content-wrapper'>
+        <div className='left-column'>
+          <h2 className='form-title'>Kapı Müşterisi</h2>
+          <div className='form-wrapper'>
+            <select className='form-select' onChange={(e) => setSelectedHouse(e.target.value)}>
+              <option value="">Ev Seçin</option>
+              {houses.map((house, index) => (
+                <option key={index} value={house}>{house}</option>
+              ))}
+            </select>
+            <select className='form-select' onChange={(e) => setKahvaltı(e.target.value)}>
+              <option value="">Kahvaltı Seçin</option>
+              <option value="Kahvaltı Dahil">Kahvaltı Dahil</option>
+              <option value="Kahvaltı Hariç">Kahvaltı Hariç</option>
+            </select>
+            <input className='form-input' type="text" placeholder="İsim Soyisim" onChange={(e) => setAdSoyad(e.target.value)} />
+            <input className='form-input' type="text" placeholder="Telefon Numarası" onChange={handleTelefonChange} />
+            <input className='form-input' type="number" placeholder="Yetişkin Sayısı" onChange={(e) => setYetişkinSayısı(e.target.value)} />
+            <input className='form-input' type="number" placeholder="Çocuk Sayısı" onChange={(e) => setÇocukSayısı(e.target.value)} />
+            <button className='form-button' onClick={handleSubmit}>Gönder</button>
           </div>
-        )}
+        </div>
+        <div className='right-column'>
+          {message && (
+            <div className='message-container'>
+              <pre className='message-text'>{message}</pre>
+              <button className='copy-button' onClick={copyToClipboard}>Kopyala</button>
+            </div>
+          )}
+        </div>
       </div>
 
       <style jsx>{`
         .form-container {
-          max-width: 500px;
+          width: 100%;
+          max-width: 1200px;
           margin: 0 auto;
           padding: 20px;
           font-family: Arial, sans-serif;
         }
 
+        .content-wrapper {
+          display: flex;
+          gap: 40px;
+        }
+
+        .left-column {
+          flex: 1;
+          max-width: 500px;
+        }
+
+        .right-column {
+          flex: 1;
+          display: flex;
+          align-items: flex-start;
+          padding-top: 80px;
+        }
+
         .form-title {
-          text-align: center;
+          text-align: left;
           color: #333;
           margin-bottom: 30px;
+        }
+
+        .message-container {
+          width: 100%;
+          padding: 20px;
+          background-color: #f5f5f5;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .form-wrapper {
@@ -129,13 +161,6 @@ const KapiGiris = () => {
 
         .form-button:hover, .copy-button:hover {
           background-color: #357abd;
-        }
-
-        .message-container {
-          margin-top: 20px;
-          padding: 15px;
-          background-color: #f5f5f5;
-          border-radius: 6px;
         }
 
         .message-text {

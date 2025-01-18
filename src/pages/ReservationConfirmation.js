@@ -90,7 +90,7 @@ ${childrenSummary}- ${mealPlan}
             <div className="mb-2">
               <input
                 type="text"
-                className="form-control form-control-sm"
+                className="form-control form-control-md"
                 placeholder="İsim Soyisim"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -99,7 +99,7 @@ ${childrenSummary}- ${mealPlan}
             </div>
             <div className="mb-2">
               <select
-                className="form-select form-select-sm"
+                className="form-select form-select-md"
                 value={roomType}
                 onChange={(e) => setRoomType(e.target.value)}
               >
@@ -122,7 +122,7 @@ ${childrenSummary}- ${mealPlan}
             <div className="mb-2">
               <input
                 type="date"
-                className="form-control form-control-sm"
+                className="form-control form-control-md"
                 value={checkInDate}
                 onChange={(e) => setCheckInDate(e.target.value)}
                 required
@@ -131,7 +131,7 @@ ${childrenSummary}- ${mealPlan}
             <div className="mb-2">
               <input
                 type="text"
-                className="form-control form-control-sm"
+                className="form-control form-control-md"
                 placeholder="Gece Sayısı"
                 value={nights}
                 onChange={(e) => setNights(e.target.value)}
@@ -141,7 +141,7 @@ ${childrenSummary}- ${mealPlan}
             <div className="mb-2">
               <input
                 type="text"
-                className="form-control form-control-sm"
+                className="form-control form-control-md"
                 placeholder="Yetişkin Sayısı"
                 value={adults}
                 onChange={(e) => setAdults(e.target.value)}
@@ -151,7 +151,7 @@ ${childrenSummary}- ${mealPlan}
             <div className="mb-2">
               <input
                 type="text"
-                className="form-control form-control-sm"
+                className="form-control form-control-md"
                 placeholder="Çocuk Sayısı"
                 value={children}
                 onChange={(e) => setChildren(e.target.value)}
@@ -160,7 +160,7 @@ ${childrenSummary}- ${mealPlan}
             </div>
             <div className="mb-2">
               <select
-                className="form-select form-select-sm"
+                className="form-select form-select-md"
                 value={mealPlan}
                 onChange={(e) => setMealPlan(e.target.value)}
               >
@@ -172,7 +172,7 @@ ${childrenSummary}- ${mealPlan}
             <div className="mb-3">
               <input
                 type="number"
-                className="form-control form-control-sm"
+                className="form-control form-control-md"
                 placeholder="Gecelik Fiyat"
                 value={nightlyRate}
                 onChange={(e) => setNightlyRate(e.target.value)}
