@@ -42,6 +42,13 @@ const ReservationConfirmation = () => {
     }
   }, [checkInDate, nights]);
 
+  // Oda tipi değiştiğinde yemek planını güncelle
+  useEffect(() => {
+    if (roomType === 'Yamaç Ev') {
+      setMealPlan('Sadece Oda');
+    }
+  }, [roomType]);
+
   // Toplam fiyatı hesaplama fonksiyonu
   const calculateTotalPrice = () => {
     if (nights && nightlyRate) {
@@ -60,6 +67,11 @@ const ReservationConfirmation = () => {
   
     const childrenSummary = children > 0 ? `- ${children} Çocuk\n` : '';
   
+    // Banka bilgilerini oda tipine göre belirleme
+    const bankDetails = roomType === 'Yamaç Ev' 
+      ? `\n\nHESAP ADI:\nSERKAN SOYTOK - MURAT CENNET\n\nİBAN:\nTR29 0006 4000 0013 6600 3265 59\n\nGönderim sonrasında dekontunuzu rica ederiz`
+      : `\n\nHESAP ADI:\nZorlu yavuz aydeniz bizimev\n\nİBAN:\nTR86 0006 4000 0013 6600 3774 28\n\nİş bankası datça şubesi\n\nGönderim sonrasında dekontunuzu rica ederiz`;
+  
     let summary = `
 - ${capitalizeFullName(name)}
 - ${roomType}
@@ -71,7 +83,7 @@ const ReservationConfirmation = () => {
 ${childrenSummary}- ${mealPlan}
 
 - Toplam Fiyat: ${totalPrice} ₺
-- Ön Ödeme: ${depositAmount} ₺
+- Ön Ödeme: ${depositAmount} ₺${bankDetails}
     `.trim();
 
     setReservationSummary(summary);
@@ -163,10 +175,10 @@ ${childrenSummary}- ${mealPlan}
                 className="form-select form-select-md"
                 value={mealPlan}
                 onChange={(e) => setMealPlan(e.target.value)}
+                disabled={roomType === 'Yamaç Ev'}
               >
                 <option value="Kahvaltı Dahil">Kahvaltı Dahil</option>
                 <option value="Sadece Oda">Sadece Oda</option>
-
               </select>
             </div>
             <div className="mb-3">
