@@ -80,8 +80,8 @@ ${date} / ${day}
     ? `⁠Giriş yapacak ${filteredCheckIns.length} odamız bulunmaktadır.`
     : 'Giriş yapacak odamız bulunmamaktadır.'}
 - ${filteredStaying.length > 0 
-    ? `Bugün konaklamaya devam eden ${filteredStaying.length} odamız bulunmaktadır.`
-    : 'Bugün konaklamaya devam eden odamız bulunmamaktadır.'}
+    ? `Konaklamaya devam eden ${filteredStaying.length} odamız bulunmaktadır.`
+    : 'Konaklamaya devam eden odamız bulunmamaktadır.'}
 - ${filteredCheckOuts.length > 0 
     ? `Çıkış yapacak ⁠${filteredCheckOuts.length} odamız bulunmaktadır.`
     : 'Çıkış yapacak odamız bulunmamaktadır.'}\n`;
