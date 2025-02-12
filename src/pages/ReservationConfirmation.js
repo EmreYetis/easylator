@@ -44,7 +44,7 @@ const ReservationConfirmation = () => {
 
   // Oda tipi değiştiğinde yemek planını güncelle
   useEffect(() => {
-    if (roomType === 'Yamaç Ev' || roomType === 'Mengen Ev') {
+    if (roomType === 'Yamaç Ev') {
       setMealPlan('Sadece Oda');
     }
   }, [roomType]);
@@ -175,7 +175,7 @@ ${childrenSummary}- ${mealPlan}
                 className="form-select form-select-md"
                 value={mealPlan}
                 onChange={(e) => setMealPlan(e.target.value)}
-                disabled={roomType === 'Yamaç Ev' || roomType === 'Mengen Ev'}
+                disabled={roomType === 'Yamaç Ev'}
               >
                 <option value="Kahvaltı Dahil">Kahvaltı Dahil</option>
                 <option value="Sadece Oda">Sadece Oda</option>
