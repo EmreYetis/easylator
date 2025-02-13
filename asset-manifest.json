@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/easylator/static/css/main.aa824644.css",
+    "main.js": "/easylator/static/js/main.7662744a.js",
+    "index.html": "/easylator/index.html",
+    "main.aa824644.css.map": "/easylator/static/css/main.aa824644.css.map",
+    "main.7662744a.js.map": "/easylator/static/js/main.7662744a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.aa824644.css",
+    "static/js/main.7662744a.js"
+  ]
+}
