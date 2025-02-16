@@ -3,13 +3,17 @@ import React from 'react';
 
 const CheckOut = () => {
   const handleCopyClick = () => {
-    const text = `🏖Günaydın🌞
+    const text = `BİZİM EV DATÇA 🏡
 
--Check-Out Saatimizin 12.00 olduğunu hatırlatmak ister. Sizleri tesisimizde ağırladığımız için mutluluklar duyduğumuzu belirtmek isteriz. 🤗
+🏖 Günaydın! ☀️
 
--Ekstra yeme içme harcamalarınızı restoran bölümüne yapabilirsiniz.
+-Sizleri tesisimizde ağırlamaktan büyük mutluluk duyduk. 😇
 
-Bizim Ev Datça`;
+-Check-out saatimizin 11:30 olduğunu hatırlatmak isteriz.
+
+-Minibar harcamalarınızı Resepsiyona, ekstra yiyecek ve içecek harcamalarınızı ise Restorana ödeyebilirsiniz.
+
+-Bizi tercih ettiğiniz için teşekkür ederiz. 🍀`;
     
     navigator.clipboard.writeText(text)
       .then(() => alert('Metin kopyalandı!'))
@@ -37,10 +41,17 @@ Bizim Ev Datça`;
       
           
       <div className="checkout-message">
-        <p>🏖Günaydın🌞</p>
-        <p>-Check-Out Saatimizin <strong>12.00</strong> olduğunu hatırlatmak ister. Sizleri tesisimizde ağırladığımız için mutluluklar duyduğumuzu belirtmek isteriz. 🤗</p>
-        <p>-Ekstra yeme içme harcamalarınızı <strong>restoran</strong> bölümüne yapabilirsiniz.</p>
-        <p>Bizim Ev Datça</p>
+        <p>BİZİM EV DATÇA 🏡 </p>
+
+<p>🏖 Günaydın! ☀️</p>
+
+<p>-Sizleri tesisimizde ağırlamaktan büyük mutluluk duyduk. 😇</p>
+
+<p>-Check-out saatimizin 11:30 olduğunu hatırlatmak isteriz.</p>
+
+<p>-Minibar harcamalarınızı Resepsiyona, ekstra yiyecek ve içecek harcamalarınızı ise Restorana ödeyebilirsiniz.</p>
+
+<p>-Bizi tercih ettiğiniz için teşekkür ederiz. 🍀</p>
       </div>
     </div>
   );
